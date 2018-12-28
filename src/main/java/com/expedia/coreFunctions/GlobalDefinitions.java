@@ -1,14 +1,14 @@
 package com.expedia.coreFunctions;
 
 public class GlobalDefinitions {
-    //public static final String browserType = "chrome";
-    public static final String CHROME_DRIVER_PATH = "C:\\Program Files (x86)\\Google\\Chrome\\";
+    static final String GECKO_DRIVER_PATH = System.getProperty("user.dir").concat("\\drivers\\geckoDriver\\");
+    static final String CHROME_DRIVER_PATH = System.getProperty("user.dir").concat("\\drivers\\chromeDriver\\");
 
-    public static final String URL = "https://www.expedia.com/";
+    protected static final String URL = "https://www.expedia.com/";
 
-    protected static final int DELAY = 30;
-    protected static final int IMPLICITDELAY = 40;
+    public static final int DELAY = 30;
+    public static final int IMPLICITDELAY = 50;
 
-    protected static final String XPATH = "xpath";
-    protected static final String CSS = "css";
+    public static final String XPATH = "xpath";
+    public static final String CSS = "css";
 }

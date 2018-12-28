@@ -11,7 +11,7 @@ public class TestConditions extends DriverSetup {
     @Parameters("browserType")
     public static void initializeTestBaseSetup(String browserType) {
         try {
-            DriverSetup.initDriver(URL, "chrome");
+            DriverSetup.initDriver(URL, browserType);
         } catch (Exception e) {
             System.out.println("Error....." + e.getStackTrace());
         }
@@ -20,6 +20,7 @@ public class TestConditions extends DriverSetup {
     @AfterClass
     public static void tearDown() {
         System.out.println("Closing browser. ");
+        driverInstance.manage().deleteAllCookies();
         driverInstance.quit();
         driverInstance = null;
     }
