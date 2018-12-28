@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverSetup extends GlobalDefinitions {
-    public static WebDriver driverInstance = null;
+    protected static WebDriver driverInstance = null;
 
     public static void initDriver(String url, String browserType) {
         if (driverInstance == null) {
@@ -16,13 +16,15 @@ public class DriverSetup extends GlobalDefinitions {
                     driverInstance = new ChromeDriver();
                     break;
 
-                case "FF":
+                case "firefox":
                     System.out.println("Launching FireFox driver with new profile...\n");
+                    String property = GECKO_DRIVER_PATH + "geckodriver.exe";
+                    System.setProperty("webdriver.gecko.driver", property);
                     driverInstance = new FirefoxDriver();
                     break;
 
                 default:
-                    System.out.println("Invalid browser type specified.");
+                    System.out.println("Invalid browser type specified. Please select chrome or firefox.");
             }
 
             driverInstance.manage().window().maximize();

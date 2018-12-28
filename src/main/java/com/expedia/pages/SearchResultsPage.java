@@ -20,6 +20,7 @@ public class SearchResultsPage extends ActionsSetup {
     }
 
     protected static WebElement airlinesIncludedPanelList() {
-        return getElement("//fieldset[@id='airlines']//div[@class='uitk-grid all-grid-fallback-alt category-grid']", DELAY, XPATH);
+        return getElement("//fieldset[@id='airlines']" +
+                "//div[@class='uitk-grid all-grid-fallback-alt category-grid']", DELAY, XPATH);
     }
 }

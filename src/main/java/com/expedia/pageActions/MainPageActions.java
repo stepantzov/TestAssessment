@@ -4,6 +4,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import com.expedia.pages.MainPage;
 
+import org.openqa.selenium.chrome.ChromeDriver;
+
 public class MainPageActions extends MainPage {
     private static WebDriver driver;
 
@@ -34,8 +36,16 @@ public class MainPageActions extends MainPage {
     }
 
     public static void typeReturningDate(String dateFormatted) {
-        sendKeys(returningDateField(), Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-        sendKeys(returningDateField(), dateFormatted);
+        //compatibility issue and differences in chrome/firefox driver behaviour solved below
+        if (driverInstance instanceof ChromeDriver) {
+            sendKeys(returningDateField(), Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+            sendKeys(returningDateField(), dateFormatted);
+        } else {
+            for (int i = 0; i < 3; i++) {
+                sendKeys(returningDateField(), Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+            }
+            sendKeys(returningDateField(), dateFormatted);
+        }
     }
 
     public static void addOneAdultTraveler() {
@@ -43,7 +53,7 @@ public class MainPageActions extends MainPage {
         elementClick(addOneAdultButton());
     }
 
-    public static void pressSearchButton(){
+    public static void searchForFlight() {
         elementClick(searchButton());
     }
 }

@@ -2,6 +2,7 @@ package com.expedia.pageActions;
 
 import com.expedia.dto.SearchResultsDto;
 import com.expedia.pages.SearchResultsPage;
+
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
