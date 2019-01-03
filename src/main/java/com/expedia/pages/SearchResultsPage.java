@@ -10,7 +10,7 @@ public class SearchResultsPage extends ActionsSetup {
                 "//li[" + designatedRow + "]//div[1]/span[@class='full-bold no-wrap']", DELAY, XPATH);
     }
 
-    protected static Boolean priceForSpecificRowPresent(int designatedRow) {
+    protected static Boolean ifPriceForSpecificRowPresent(int designatedRow) {
         try {
             driverInstance.findElement(By.xpath("//div[@id='flight-listing-container']" +
                     "//li[" + designatedRow + "]//div[1]/span[@class='full-bold no-wrap']"));

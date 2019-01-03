@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class SearchResultsPageActions extends SearchResultsPage {
     private static WebDriver driver;
+    static ArrayList flightDetailsRow = new ArrayList();
 
     public SearchResultsPageActions(WebDriver driver) {
         this.driver = driver;
@@ -34,24 +35,23 @@ public class SearchResultsPageActions extends SearchResultsPage {
     }
 
     private static ArrayList<SearchResultsDto> getFlightDetailsNumberOfRows(int numberOfRows) {
-        ArrayList flightDetailsRow = new ArrayList();
-
-        if (SearchResultsPage.priceForSpecificRowPresent(numberOfRows)) {
+        if (SearchResultsPage.ifPriceForSpecificRowPresent(numberOfRows)) {
             for (int i = 1; i <= numberOfRows; i++) {
                 flightDetailsRow.add(getFlightDetailsForSpecificRow(i));
             }
-        } else if (numberOfRows > 0) {
+        } else if (numberOfRows > 1) {
             System.out.println("Currently number of available flight rows are limited by search conditions.");
-            System.out.println("Decreasing number of rows to " + numberOfRows--);
-            SearchResultsPageActions.getFlightDetailsNumberOfRows(numberOfRows);
+            System.out.println("Decreasing number of rows in results into " + --numberOfRows);
+            getFlightDetailsNumberOfRows(numberOfRows);
         }
+
         return flightDetailsRow;
     }
 
     public static void printFlightDetailsForNumberOfRows(int numberOfRows) {
         int rowIndex = 1;
         ArrayList<SearchResultsDto> flightDetailsRows = getFlightDetailsNumberOfRows(numberOfRows);
-        System.out.println("Please find the search results and flight details on the rows below.");
+        System.out.println("\nPlease find the search results and flight details on the rows below.");
         for (SearchResultsDto flightDetailsRow : flightDetailsRows) {
             System.out.format("Flight row number %d details: \n", (rowIndex++));
             System.out.println("Flight price: " + flightDetailsRow.getFlightPrice());
