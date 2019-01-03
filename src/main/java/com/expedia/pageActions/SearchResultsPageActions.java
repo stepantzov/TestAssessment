@@ -35,10 +35,16 @@ public class SearchResultsPageActions extends SearchResultsPage {
 
     private static ArrayList<SearchResultsDto> getFlightDetailsNumberOfRows(int numberOfRows) {
         ArrayList flightDetailsRow = new ArrayList();
-        for (int i = 1; i <= numberOfRows; i++) {
-            flightDetailsRow.add(getFlightDetailsForSpecificRow(i));
-        }
 
+        if (SearchResultsPage.priceForSpecificRowPresent(numberOfRows)) {
+            for (int i = 1; i <= numberOfRows; i++) {
+                flightDetailsRow.add(getFlightDetailsForSpecificRow(i));
+            }
+        } else if (numberOfRows > 0) {
+            System.out.println("Currently number of available flight rows are limited by search conditions.");
+            System.out.println("Decreasing number of rows to " + numberOfRows--);
+            SearchResultsPageActions.getFlightDetailsNumberOfRows(numberOfRows);
+        }
         return flightDetailsRow;
     }
 

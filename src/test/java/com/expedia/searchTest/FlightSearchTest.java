@@ -23,8 +23,8 @@ public class FlightSearchTest extends TestConditions {
         MainPageActions.typeDestinationCity(destinationCity);
         MainPageActions.selectAirportOnPopUp(destinationAirport);
 
-        MainPageActions.typeDepartingDate(TimeStamp.getDateFormatted(5));
-        MainPageActions.typeReturningDate(TimeStamp.getDateFormatted(8));
+        MainPageActions.typeDepartingDate(TimeStamp.getDateFormatted(0));
+        MainPageActions.typeReturningDate(TimeStamp.getDateFormatted(3));
 
         MainPageActions.addOneAdultTraveler();
         MainPageActions.searchForFlight();
