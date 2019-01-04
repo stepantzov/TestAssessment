@@ -13,7 +13,7 @@ public class TestConditions extends DriverSetup {
         try {
             DriverSetup.initDriver(URL, browserType);
         } catch (Exception e) {
-            System.out.println("Error....." + e.getStackTrace());
+            System.out.println("Error..." + e.getStackTrace());
         }
     }
 

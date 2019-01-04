@@ -4,6 +4,7 @@ import com.expedia.pageActions.MainPageActions;
 import com.expedia.pageActions.SearchResultsPageActions;
 import com.expedia.testConditions.TestConditions;
 import com.expedia.utils.TimeStamp;
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -29,7 +30,7 @@ public class FlightSearchTest extends TestConditions {
         MainPageActions.addOneAdultTraveler();
         MainPageActions.searchForFlight();
 
-        softAssert.assertTrue(SearchResultsPageActions.
+        Assert.assertTrue(SearchResultsPageActions.
                 verifyIfAirlinesIncludedPanelVisible(), "Airlines Included panel is not visible.");
         softAssert.assertEquals(SearchResultsPageActions.
                 getFlightPriceFromSpecificRow(1), positiveFlightPrice);

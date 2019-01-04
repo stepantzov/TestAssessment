@@ -11,7 +11,7 @@ public class DriverSetup extends GlobalDefinitions {
         if (driverInstance == null) {
             switch (browserType) {
                 case "chrome":
-                    System.out.println("Launching Chrome driver with new profile..");
+                    System.out.println("Launching Chrome driver with new profile...");
                     System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH + "chromedriver.exe");
                     driverInstance = new ChromeDriver();
                     break;
